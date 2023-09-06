@@ -1,3 +1,8 @@
+:root {
+    --color-bg: #fff;
+    --color-main: #000;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -5,10 +10,10 @@
 }
 
 body {
-    background: #fff;
-    color: #000;
-    background: #fff;
-    color: #000;
+    background: var(--color-bg);
+    color: var(--color-main);
+    background: var(--color-bg);
+    color: var(--color-main);
     display: flex;
     flex-wrap: wrap;
     font-family: Helvetica, sans-serif;
@@ -43,7 +48,7 @@ input {
 }
 
 header button {
-    background-color: #000;
+    background-color: #252525;
     border: solid 4px #fff;
     border-radius: 50px;
     cursor: pointer;
@@ -62,11 +67,12 @@ header button {
     margin: 16px 25px;
     position: relative;
     width: 60px;
+    transition:  background-color 0.5s, transform 0.8s;
 }
 
 span {
     bottom: 100%;
-    color: #000;
+    color: var(--color-main);
     font-size: 20px;
     left: 50%;
     padding: 12px 0;
@@ -88,11 +94,11 @@ p {
 }
 
 main button {
-    background: #000;
+    background: var(--color-main);
     border: solid 0.3vw;
-    color: #fff;
-    background: #fff;
-    color: #000;
+    color: var(--color-bg);
+    background: var(--color-bg);
+    color: var(--color-main);
     cursor: pointer;
     font-family: Helvetica, sans-serif;
     font-size: 32px;
@@ -102,6 +108,81 @@ main button {
 }
 
 main button:hover {
+    background: var(--color-main);
+    color: var(--color-bg);
+}
+
+/* LIGHT MODE */
+body.light{
+    --color-bg: #fff;
+    --color-main: #000;
+}
+
+body.light .icon {
+    background: grey;
+    transform: translateX(0);
+}
+/* dodawanie elementu, pseudoklasa */
+body.light .icon::after {
+    content: none;
+}
+
+/* DARK MODE
+
+body.dark, 
+body.dark main button{
     background: #000;
     color: #fff;
+}
+
+body.dark main button:hover {
+    background: #fff;
+    color: #000;
+} */
+
+body.dark{
+    --color-bg: #000;
+    --color-main: #fff;
+}
+
+body.dark .icon {
+    background: grey;
+    transform: translateX(85px);
+}
+/* dodawanie elementu, pseudoklasa */
+body.dark .icon::after {
+    content: '';
+    background-color: #252525;
+    display: block;
+    height: 50px;
+    width: 45px;
+    border-radius: 100%;
+    top: 5px;
+    left: -1px;
+    position: absolute;
+}
+
+@media (prefers-color-scheme: dark) {
+
+    body{
+        --color-bg: #000;
+        --color-main: #fff;
+    }
+    
+    body .icon {
+        background: grey;
+        transform: translateX(85px);
+    }
+    /* dodawanie elementu, pseudoklasa */
+    body .icon::after {
+        content: '';
+        background-color: #252525;
+        display: block;
+        height: 50px;
+        width: 45px;
+        border-radius: 100%;
+        top: 5px;
+        left: -1px;
+        position: absolute;
+    }
 }
